@@ -10,13 +10,21 @@ def show_home():
 
 @app.route("/student-search")
 def get_student_form():
- return render_template("student_search.html")
+    return render_template("student_search.html")
+
 
 @app.route("/student")
-def get_student():
+def redirect_to_student_info():
+    """Take form submission and redirect to that student's info page"""
+    github = request.args.get("github", "jhacks")
+    url_string = "student/" + github
+    return redirect(url_string)
+
+
+@app.route("/student/<string:github>")
+def get_student(github):
     """Show information about a student."""
 
-    github = request.args.get("github", "jhacks")
     first, last, github = hackbright.get_student_by_github(github)
     grades = hackbright.get_all_grades_by_github(github)
     return render_template("student_info.html", first=first, last=last, github=github, grades=grades)
@@ -42,7 +50,8 @@ def get_project_info(title):
     """Shows project info given the title"""
 
     id, title, desc, max_grade = hackbright.get_project_by_title(title)
-    return render_template("project_info.html", title=title, desc=desc, max_grade=max_grade)
+    grades = hackbright.get_all_grades_by_project(title)
+    return render_template("project_info.html", title=title, desc=desc, max_grade=max_grade, grades=grades)
 
 
 if __name__ == "__main__":

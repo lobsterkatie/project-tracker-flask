@@ -14,4 +14,23 @@
     <br>
     Maximum Grade: {{ max_grade }}
 
+    <table>
+        <thead>
+            <th>Student</th>
+            <th>Grade</th>
+        </thead>
+
+        <tbody>
+            {% for student in grades %}
+            <tr>
+                <td>
+                    <a href="/student/{{ student[3] }}">
+                        {{ student[0] }} {{ student[1] }}
+                    </a>
+                </td>
+                <td>{{ student[2] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
 {% endblock %}
