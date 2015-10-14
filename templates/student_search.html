@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+    Student Search
+
+{% endblock %}
+
+
+{% block body %}
+    <h2>Please enter the GitHub information for the student you would like to see<h2>
+    <form action="/student">
+        <label> Student github:
+            <input type="text" name="github" placeholder="Enter github username here!">
+        </label>
+        <input type="submit" value="Search!">
+    </form>
+
+{% endblock %}

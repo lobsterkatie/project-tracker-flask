@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+    Student Info
+
+{% endblock %}
+
+
+{% block body %}
+
+    <h1>{{ first }} {{ last }}</h1>
+
+    <p>GitHub Account: {{ github }}</p>
+
+    <table>
+        <thead>
+            <th>Project</th>
+            <th>Grade</th>
+        </thead>
+
+        <tbody>
+            {% for project in grades %}
+            <tr>
+                <td>
+                    <a href="/project/{{ project[0] }}">
+                        {{ project[0] }} 
+                    </a>
+                </td>
+                <td>{{ project[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table
+
+{% endblock %}

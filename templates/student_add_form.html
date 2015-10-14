@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+    Student Add
+
+{% endblock %}
+
+
+{% block body %}
+    <h2>Please Enter the New Student Information<h2>
+    <form action="/student-add-confirmation" method="POST">
+        <label> Github:
+            <input type="text" name="github" placeholder="Enter github username here!">
+        </label>
+        <label> Last Name:
+            <input type="text" name="last" placeholder="Enter last name here!">
+        </label>
+        <label> First Name:
+            <input type="text" name="first" placeholder="Enter first name here!">
+        </label>
+        <input type="submit" value="Let it be so.">
+    </form>
+
+{% endblock %}
