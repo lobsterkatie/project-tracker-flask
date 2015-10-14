@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def show_home():
-    render_template("home.html")
+    return render_template("home.html")
 
 @app.route("/student-search")
 def get_student_form():
