@@ -94,7 +94,7 @@ def get_all_grades_by_github(github):
 
     QUERY = """SELECT project_title, grade FROM Grades WHERE student_github = :github"""
     db_cursor = db.session.execute(QUERY, {'github': github})
-    return db_cursor
+    return db_cursor.fetchall()
 
 def handle_input():
     """Main loop.

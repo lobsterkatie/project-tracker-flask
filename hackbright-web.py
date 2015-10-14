@@ -37,6 +37,14 @@ def confirm_student_add():
     confirmation_string = hackbright.make_new_student(first, last, github)
     return render_template("student_add_confirmation.html", confirmation_string=confirmation_string)
 
+@app.route("/project/<string:title>")
+def get_project_info(title):
+    """Shows project info given the title"""
+
+    id, title, desc, max_grade = hackbright.get_project_by_title(title)
+    return render_template("project_info.html", title=title, desc=desc, max_grade=max_grade)
+
+
 if __name__ == "__main__":
     hackbright.connect_to_db(app)
     app.run(debug=True)
