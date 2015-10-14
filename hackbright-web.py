@@ -10,7 +10,7 @@ def show_home():
 
 @app.route("/student-search")
 def get_student_form():
-    return render_template("student_search.html")
+ return render_template("student_search.html")
 
 @app.route("/student")
 def get_student():
@@ -18,7 +18,8 @@ def get_student():
 
     github = request.args.get("github", "jhacks")
     first, last, github = hackbright.get_student_by_github(github)
-    return render_template("student_info.html", first=first, last=last, github=github)
+    grades = hackbright.get_all_grades_by_github(github)
+    return render_template("student_info.html", first=first, last=last, github=github, grades=grades)
 
 
 @app.route("/student-add")

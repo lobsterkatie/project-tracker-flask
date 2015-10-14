@@ -88,6 +88,14 @@ def assign_grade(github, title, grade):
     print confirmation_string
     return confirmation_string
 
+
+def get_all_grades_by_github(github):
+    """Given a github username, returns all project grades for that student"""
+
+    QUERY = """SELECT project_title, grade FROM Grades WHERE student_github = :github"""
+    db_cursor = db.session.execute(QUERY, {'github': github})
+    return db_cursor
+
 def handle_input():
     """Main loop.
 
