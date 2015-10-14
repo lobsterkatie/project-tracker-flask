@@ -105,6 +105,22 @@ def get_all_grades_by_project(title):
     db_cursor = db.session.execute(QUERY, {'title': title})
     return db_cursor.fetchall()
 
+def get_all_students():
+    """Gets all students"""
+
+    QUERY = """SELECT first_name, last_name, github
+                FROM Students"""
+    db_cursor = db.session.execute(QUERY)
+    return db_cursor.fetchall()
+
+def get_all_projects():
+    """Return a list of all projects"""
+
+    QUERY = """SELECT title
+                FROM projects"""
+    db_cursor = db.session.execute(QUERY)
+    return db_cursor.fetchall()
+
 
 def handle_input():
     """Main loop.

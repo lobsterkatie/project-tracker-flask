@@ -6,7 +6,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def show_home():
-    return render_template("home.html")
+    students = hackbright.get_all_students()
+    projects = hackbright.get_all_projects()
+    return render_template("home.html", students=students, projects=projects)
 
 @app.route("/student-search")
 def get_student_form():

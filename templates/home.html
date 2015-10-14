@@ -12,6 +12,41 @@
     <a href="/student-search">Search for a student by their github username</a>
     <br>
     <a href="/student-add">Add a new student to the database</a>
+    <br><br>
+    <table style="border:1px solid black">
+        <thead>
+            <th style="text-align:left; border-bottom:1px solid black">Students</th>
+        </thead>
 
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>
+                    <a href="/student/{{ student[2] }}">
+                        {{ student[0] }} {{ student[1] }}
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <table style="border:1px solid black">
+        <thead>
+            <th style="text-align:left; border-bottom:1px solid black">Projects</th>
+        </thead>
+
+        <tbody>
+            {% for project in projects %}
+            <tr>
+                <td>
+                    <a href="/project/{{ project[0] }}">
+                        {{ project[0] }} 
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
